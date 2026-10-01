@@ -2,8 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:southsea_cinema/constants.dart';
 import 'package:southsea_cinema/widgets/nav_drawer.dart';
 
-class MovieListing extends StatelessWidget {
+class MovieListing extends StatefulWidget {
   const MovieListing({super.key});
+
+  @override
+  State<MovieListing> createState() {
+    return _MovieListingState();
+  }
+}
+
+class _MovieListingState extends State<MovieListing> {
+  int _quantity = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -62,6 +71,26 @@ class MovieListing extends StatelessWidget {
             SizedBox(height: 18),
             Row(
               children: [
+                DropdownMenu<int>(
+                  width: 100,
+                  initialSelection: 0,
+                  onSelected: (int? value) {
+                    if (value != null) {
+                      setState(() {
+                        _quantity = value;
+                      });
+                    }
+                  },
+                  dropdownMenuEntries: [
+                    DropdownMenuEntry(value: 0, label: '0'),
+                    DropdownMenuEntry(value: 1, label: '1'),
+                    DropdownMenuEntry(value: 2, label: '2'),
+                    DropdownMenuEntry(value: 3, label: '3'),
+                    DropdownMenuEntry(value: 4, label: '4'),
+                    DropdownMenuEntry(value: 5, label: '5'),
+                  ],
+                ),
+                SizedBox(width: 20),
                 Text('Adult (£7.50)', style: TextStyle(fontSize: 20)),
               ],
             ),
