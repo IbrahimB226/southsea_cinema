@@ -13,6 +13,7 @@ class MovieListing extends StatefulWidget {
 
 class _MovieListingState extends State<MovieListing> {
   int _quantity = 0;
+  String _message = '';
 
   @override
   Widget build(BuildContext context) {
@@ -94,6 +95,17 @@ class _MovieListingState extends State<MovieListing> {
                 Text('Adult (£7.50)', style: TextStyle(fontSize: 20)),
               ],
             ),
+            SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                setState(() {
+                  _message = '$_quantity ticket(s) added to your order!';
+                });
+              },
+              child: Text('ADD TO ORDER'),
+            ),
+            SizedBox(height: 20),
+            Text(_message, style: TextStyle(fontSize: 20)),
           ],
         ),
       ),
