@@ -37,20 +37,21 @@ class MovieCard extends StatelessWidget {
                         style: const TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
+                          color: Colors.orange,
                         ),
                       ),
                       const SizedBox(height: 4),
                       Text(
                         'Age Rating: ${movie.ageRating}',
                         style: const TextStyle(
-                          color: Colors.black54,
+                          color: Colors.black,
                         ),
                       ),
                       const SizedBox(height: 8),
                       Text(
                         movie.synopsis,
                         style: const TextStyle(
-                          color: Colors.black54,
+                          color: Colors.black,
                         ),
                       ),
                     ],
@@ -63,10 +64,11 @@ class MovieCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  movie.screeningTime,
+                  movie.formattedPrice,
                   style: const TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
+                    color: Colors.orange,
                   ),
                 ),
                 ElevatedButton(
