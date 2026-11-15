@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:southsea_cinema/main.dart';
 
@@ -35,6 +36,47 @@ void main() {
         expect(
           find.text('0 ticket(s) added to your order'),
           findsOneWidget,
+        );
+      },
+    );
+
+    testWidgets(
+      'Booking different movies shows correct details and resets feedback',
+      (WidgetTester tester) async {
+        await tester.pumpWidget(const SouthseaCinemaApp());
+
+        // Book Interstellar
+        await tester.tap(find.text('Book').first);
+        await tester.pumpAndSettle();
+
+        expect(find.text('Interstellar (12A)'), findsOneWidget);
+
+        await tester.ensureVisible(find.text('Add to order'));
+        await tester.tap(find.text('Add to order'));
+        await tester.pump();
+
+        expect(
+          find.text('0 ticket(s) added to your order'),
+          findsOneWidget,
+        );
+
+        // Go back to home page
+        Navigator.of(
+          tester.element(find.text('Interstellar (12A)')),
+        ).pop();
+
+        await tester.pumpAndSettle();
+
+        // Book Shutter Island
+        await tester.tap(find.text('Book').last);
+        await tester.pumpAndSettle();
+
+        expect(find.text('Shutter Island (15)'), findsOneWidget);
+
+        // Feedback should be reset
+        expect(
+          find.text('0 ticket(s) added to your order'),
+          findsNothing,
         );
       },
     );
