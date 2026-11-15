@@ -35,8 +35,18 @@ class NavDrawer extends StatelessWidget {
                 ],
               ),
             ),
-            const DrawerTile(title: 'Home', route: '/'),
-            const DrawerTile(title: 'Movie Listing', route: '/listing'),
+            const DrawerTile(
+              title: 'Home',
+              route: '/',
+            ),
+            const DrawerTile(
+              title: 'My Basket',
+              route: '/basket',
+            ),
+            const DrawerTile(
+              title: 'My Settings',
+              route: '/settings',
+            ),
           ],
         ),
       ),
@@ -48,14 +58,24 @@ class DrawerTile extends StatelessWidget {
   final String title;
   final String? route;
 
-  const DrawerTile({super.key, required this.title, this.route});
+  const DrawerTile({
+    super.key,
+    required this.title,
+    this.route,
+  });
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      title: Text(title, style: const TextStyle(color: cinemaFontWhite)),
+      title: Text(
+        title,
+        style: const TextStyle(
+          color: cinemaFontWhite,
+        ),
+      ),
       onTap: () {
         Navigator.pop(context);
+
         if (route != null) {
           Navigator.pushNamed(context, route!);
         }
