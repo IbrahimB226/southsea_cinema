@@ -30,8 +30,7 @@ class Movie {
     final num ticketPriceNumber = json['ticketPrice'] as num;
     final double ticketPrice = ticketPriceNumber.toDouble();
 
-    final String posterImagePath =
-        json['posterImagePath'] as String;
+    final String posterImagePath = json['posterImagePath'] as String;
 
     return Movie(
       id: id,
@@ -58,8 +57,7 @@ class Movie {
     };
   }
 
-  String get formattedPrice =>
-      '£${ticketPrice.toStringAsFixed(2)}';
+  String get formattedPrice => '£${ticketPrice.toStringAsFixed(2)}';
 }
 
 final Movie interstellar = Movie(

@@ -3,8 +3,7 @@ import 'package:southsea_cinema/models/cart_item.dart';
 class BasketRepository {
   BasketRepository._internal();
 
-  static final BasketRepository instance =
-      BasketRepository._internal();
+  static final BasketRepository instance = BasketRepository._internal();
 
   final List<CartItem> _items = [];
 

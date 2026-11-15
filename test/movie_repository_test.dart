@@ -49,8 +49,7 @@ void main() {
     test('loadMoviesFromAsset reads the bundled JSON menu', () async {
       final MovieRepository repository = MovieRepository();
 
-      final List<Movie> movies =
-          await repository.loadMoviesFromAsset();
+      final List<Movie> movies = await repository.loadMoviesFromAsset();
 
       expect(movies.length, 2);
 

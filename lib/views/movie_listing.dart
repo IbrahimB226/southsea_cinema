@@ -126,8 +126,7 @@ class _MovieListingState extends State<MovieListing> {
                   }
 
                   setState(() {
-                    _message =
-                        '$_quantity ticket(s) added to your order';
+                    _message = '$_quantity ticket(s) added to your order';
                   });
                 },
               ),

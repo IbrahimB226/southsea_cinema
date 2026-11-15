@@ -68,8 +68,7 @@ void main() {
       final Map<String, dynamic> json = {
         'id': '1',
         'title': 'Interstellar',
-        'synopsis':
-            'A team of explorers travel through a wormhole in space.',
+        'synopsis': 'A team of explorers travel through a wormhole in space.',
         'ageRating': '12A',
         'runtime': '169 min',
         'screeningTime': '19:30',

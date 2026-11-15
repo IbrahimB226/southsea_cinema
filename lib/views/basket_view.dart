@@ -75,8 +75,7 @@ class _BasketViewState extends State<BasketView> {
                               Expanded(
                                 flex: 4,
                                 child: Column(
-                                  crossAxisAlignment:
-                                      CrossAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
                                       item.movie.title,
@@ -105,8 +104,7 @@ class _BasketViewState extends State<BasketView> {
                               Expanded(
                                 flex: 2,
                                 child: Column(
-                                  crossAxisAlignment:
-                                      CrossAxisAlignment.end,
+                                  crossAxisAlignment: CrossAxisAlignment.end,
                                   children: [
                                     Text(
                                       '£${item.lineTotal.toStringAsFixed(2)}',

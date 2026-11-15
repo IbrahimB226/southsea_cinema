@@ -11,20 +11,17 @@ class SettingsView extends StatefulWidget {
 }
 
 class _SettingsViewState extends State<SettingsView> {
-  final TextEditingController _addressController =
-      TextEditingController(
-        text: 'Buckingham Building,\nLion Terrace,\nPortsmouth\nPO1 3HE',
-      );
+  final TextEditingController _addressController = TextEditingController(
+    text: 'Buckingham Building,\nLion Terrace,\nPortsmouth\nPO1 3HE',
+  );
 
-  final TextEditingController _emailController =
-      TextEditingController(
-        text: 'alex@example.com',
-      );
+  final TextEditingController _emailController = TextEditingController(
+    text: 'alex@example.com',
+  );
 
-  final TextEditingController _patronNumberController =
-      TextEditingController(
-        text: '1234',
-      );
+  final TextEditingController _patronNumberController = TextEditingController(
+    text: '1234',
+  );
 
   bool _receiveNews = true;
   String _message = '';
@@ -57,9 +54,7 @@ class _SettingsViewState extends State<SettingsView> {
                 fontWeight: FontWeight.bold,
               ),
             ),
-
             const SizedBox(height: 30),
-
             const Text(
               'Address',
               style: TextStyle(
@@ -67,9 +62,7 @@ class _SettingsViewState extends State<SettingsView> {
                 fontSize: 20,
               ),
             ),
-
             const SizedBox(height: 10),
-
             TextField(
               controller: _addressController,
               maxLines: 4,
@@ -77,9 +70,7 @@ class _SettingsViewState extends State<SettingsView> {
                 border: OutlineInputBorder(),
               ),
             ),
-
             const SizedBox(height: 24),
-
             const Text(
               'Email Address',
               style: TextStyle(
@@ -87,18 +78,14 @@ class _SettingsViewState extends State<SettingsView> {
                 fontSize: 20,
               ),
             ),
-
             const SizedBox(height: 10),
-
             TextField(
               controller: _emailController,
               decoration: const InputDecoration(
                 border: OutlineInputBorder(),
               ),
             ),
-
             const SizedBox(height: 24),
-
             const Text(
               'Patron Number',
               style: TextStyle(
@@ -106,18 +93,14 @@ class _SettingsViewState extends State<SettingsView> {
                 fontSize: 20,
               ),
             ),
-
             const SizedBox(height: 10),
-
             TextField(
               controller: _patronNumberController,
               decoration: const InputDecoration(
                 border: OutlineInputBorder(),
               ),
             ),
-
             const SizedBox(height: 24),
-
             const Text(
               'Preferences',
               style: TextStyle(
@@ -125,9 +108,7 @@ class _SettingsViewState extends State<SettingsView> {
                 fontSize: 20,
               ),
             ),
-
             const SizedBox(height: 10),
-
             SwitchListTile(
               title: const Text(
                 'Receive news by email',
@@ -136,16 +117,14 @@ class _SettingsViewState extends State<SettingsView> {
                 ),
               ),
               value: _receiveNews,
-              activeColor: cinemaBrand,
+              activeThumbColor: cinemaBrand,
               onChanged: (value) {
                 setState(() {
                   _receiveNews = value;
                 });
               },
             ),
-
             const SizedBox(height: 24),
-
             Row(
               children: [
                 Expanded(
@@ -167,9 +146,7 @@ class _SettingsViewState extends State<SettingsView> {
                     },
                   ),
                 ),
-
                 const SizedBox(width: 16),
-
                 Expanded(
                   child: PrimaryButton(
                     label: 'Save Settings',
@@ -182,9 +159,7 @@ class _SettingsViewState extends State<SettingsView> {
                 ),
               ],
             ),
-
             const SizedBox(height: 20),
-
             Text(
               _message,
               style: const TextStyle(
