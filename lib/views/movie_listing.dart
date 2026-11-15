@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:southsea_cinema/constants.dart';
+import 'package:southsea_cinema/models/cart_item.dart';
 import 'package:southsea_cinema/models/movie.dart';
+import 'package:southsea_cinema/repository/basket_repository.dart';
 import 'package:southsea_cinema/widgets/nav_drawer.dart';
 import 'package:southsea_cinema/widgets/primary_button.dart';
 
@@ -111,15 +113,24 @@ class _MovieListingState extends State<MovieListing> {
                 ],
               ),
               const SizedBox(height: 35),
-                PrimaryButton(
-                  label: 'Add to order',
-                  onPressed: () {
-                    setState(() {
-                      _message =
-                          '$_quantity ticket(s) added to your order';
-                    });
-                  },
-                ),
+              PrimaryButton(
+                label: 'Add to order',
+                onPressed: () {
+                  if (_quantity > 0) {
+                    BasketRepository.instance.addItem(
+                      CartItem(
+                        movie: widget.movie,
+                        quantity: _quantity,
+                      ),
+                    );
+                  }
+
+                  setState(() {
+                    _message =
+                        '$_quantity ticket(s) added to your order';
+                  });
+                },
+              ),
               const SizedBox(height: 20),
               Text(
                 _message,
