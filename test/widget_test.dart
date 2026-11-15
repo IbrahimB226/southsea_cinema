@@ -16,5 +16,27 @@ void main() {
         expect(find.text('Book'), findsNWidgets(2));
       },
     );
+
+    testWidgets(
+      'Full booking flow works correctly',
+      (WidgetTester tester) async {
+        await tester.pumpWidget(const SouthseaCinemaApp());
+
+        await tester.tap(find.text('Book').first);
+        await tester.pumpAndSettle();
+
+        expect(find.text('Interstellar (12A)'), findsOneWidget);
+
+        await tester.ensureVisible(find.text('Add to order'));
+
+        await tester.tap(find.text('Add to order'));
+        await tester.pump();
+
+        expect(
+          find.text('0 ticket(s) added to your order'),
+          findsOneWidget,
+        );
+      },
+    );
   });
 }
