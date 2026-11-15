@@ -1,35 +1,64 @@
-import 'package:southsea_cinema/models/movie.dart';
+import 'package:southsea_cinema/models/cart_item.dart';
 
 class BasketRepository {
-  final List<Movie> _basket = [];
+  BasketRepository._internal();
 
-  void addTicket(Movie movie) {
-    _basket.add(movie);
+  static final BasketRepository instance =
+      BasketRepository._internal();
+
+  final List<CartItem> _items = [];
+
+  List<CartItem> getItems() {
+    return List<CartItem>.unmodifiable(_items);
   }
 
-  void removeTicket(Movie movie) {
-    _basket.remove(movie);
+  void addItem(CartItem item) {
+    _items.add(item);
   }
 
-  void clearBasket() {
-    _basket.clear();
+  void removeItem(int index) {
+    if (index >= 0 && index < _items.length) {
+      _items.removeAt(index);
+    }
   }
 
-  List<Movie> getBasketItems() {
-    return List.unmodifiable(_basket);
-  }
+  int getTotalItems() {
+    int total = 0;
 
-  int getTotalTickets() {
-    return _basket.length;
-  }
-
-  double getTotalPrice() {
-    double total = 0;
-
-    for (final movie in _basket) {
-      total += movie.ticketPrice;
+    for (final CartItem item in _items) {
+      total += item.quantity;
     }
 
     return total;
+  }
+
+  int get totalItemCount {
+    return getTotalItems();
+  }
+
+  double getSubtotal() {
+    double sum = 0.0;
+
+    for (final CartItem item in _items) {
+      sum += item.lineTotal;
+    }
+
+    return sum;
+  }
+
+  double getServiceCharge() {
+    if (_items.isEmpty) {
+      return 0.0;
+    }
+
+    return 4.0;
+  }
+
+  double getTotalDue() {
+    return getSubtotal() + getServiceCharge();
+  }
+
+  void clear() {
+    _items.clear();
   }
 }
